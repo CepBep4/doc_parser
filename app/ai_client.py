@@ -6,7 +6,6 @@ import openai
 import json
 
 def requestGPT(prompt: str) -> dict:    
-    API_KEY = "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"  # вставь свой ключ сюда
     openai.api_key = API_KEY
 
     try:
