@@ -1,0 +1,23 @@
+[
+  {
+    "datetime": "2025-07-15T14:36:11.724601",
+    "file": "/Users/sever/Documents/work/doc_parser/testDebpFolder/Петров_ВВ/МЕТРЕВЕЛИ_ГИОРГИЙ_РОСТОМОВИЧ_ѓа®ҐЃ§_p.png",
+    "stage": "ai_client",
+    "status": "error",
+    "error_msg": "Ошибка запроса к GPT: Rate limit reached for gpt-4o-mini in organization org-yjX3AeBsAAGP5lHETnC9be0r on requests per min (RPM): Limit 3, Used 3, Requested 1. Please try again in 20s. Visit https://platform.openai.com/account/rate-limits to learn more. You can increase your rate limit by adding a payment method to your account at https://platform.openai.com/account/billing."
+  },
+  {
+    "datetime": "2025-07-15T14:36:12.491199",
+    "file": "/Users/sever/Documents/work/doc_parser/testDebpFolder/Петров_ВВ/МЕТРЕВЕЛИ_ГИОРГИЙ_РОСТОМОВИЧ_ѓа®ҐЃ§_page-0001.jpg",
+    "stage": "ai_client",
+    "status": "error",
+    "error_msg": "Ошибка запроса к GPT: Rate limit reached for gpt-4o-mini in organization org-yjX3AeBsAAGP5lHETnC9be0r on requests per min (RPM): Limit 3, Used 3, Requested 1. Please try again in 20s. Visit https://platform.openai.com/account/rate-limits to learn more. You can increase your rate limit by adding a payment method to your account at https://platform.openai.com/account/billing."
+  },
+  {
+    "datetime": "2025-07-15T14:36:13.214533",
+    "file": "/Users/sever/Documents/work/doc_parser/testDebpFolder/Петров_ВВ/МЕТРЕВЕЛИ_ГИОРГИЙ_РОСТОМОВИЧ_ѓа®ҐЃ§.xlsx",
+    "stage": "ai_client",
+    "status": "error",
+    "error_msg": "Ошибка запроса к GPT: Rate limit reached for gpt-4o-mini in organization org-yjX3AeBsAAGP5lHETnC9be0r on requests per min (RPM): Limit 3, Used 3, Requested 1. Please try again in 20s. Visit https://platform.openai.com/account/rate-limits to learn more. You can increase your rate limit by adding a payment method to your account at https://platform.openai.com/account/billing."
+  }
+]

@@ -1,0 +1,18 @@
+[
+  {
+    "datetime": "2025-07-15T14:35:52.787815",
+    "file": "/Users/sever/Documents/work/doc_parser/testDebpFolder/.DS_Store",
+    "reason": "Недопустимое расширение",
+    "ext": "ds_store",
+    "creditor": "Сбербанк",
+    "debtor": ".DS_Store"
+  },
+  {
+    "datetime": "2025-07-15T14:35:52.788550",
+    "file": "/Users/sever/Documents/work/doc_parser/testDebpFolder/Иванов_АА/.DS_Store",
+    "reason": "Недопустимое расширение",
+    "ext": "ds_store",
+    "creditor": "Сбербанк",
+    "debtor": "Иванов_АА"
+  }
+]

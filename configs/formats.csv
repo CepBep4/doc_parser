@@ -1,0 +1,8 @@
+extension,description,parser
+pdf,Документ PDF,pdf
+docx,Документ Word,docx
+doc,Старый Word,doc
+xlsx,Таблица Excel,xlsx
+jpg,Скан изображения,jpg
+png,Скан изображения,png
+
