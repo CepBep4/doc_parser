@@ -1,0 +1,5 @@
+ftp_host: "ftp.example.com"     # адрес сервера FTP
+ftp_user: "myuser"              # имя пользователя
+ftp_pass: "mypassword"          # пароль
+ftp_dir: "/upload"              # папка, куда складывать файлы (по умолчанию "/")
+Каталог: mnt/ssd4tb/data/upload_fpt/

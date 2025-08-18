@@ -23,7 +23,7 @@ from validator import validateFiles
 from exporter import exportFiles
 
 #Модуль для отправки в 1c
-from api1c_client import sendTo1cApi
+from fpt_client import sendTo1cFtp
 
 #Инициализация состояний
 state = SystemState()
@@ -58,7 +58,7 @@ with state.timeManager("Экспорт данных"):
     
 #Отправляем в 1C (Временно закоментировано)
 # with state.timeManager("Отправляем в 1с"):
-#     if not checkPause(state): listFiles = sendTo1cApi(state, config, listFiles)
+#     if not checkPause(state): listFiles = sendTo1cFtp(state, config, listFiles)
     
 #Завершаем работу
 breakWork(state)

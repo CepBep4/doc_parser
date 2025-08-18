@@ -43,6 +43,7 @@ def exportToJson(p: HandlingProcess):
         append_to_json_array("logs/duplicates_log.json", p.ai)
 
     else:
+        p.exportName = None
         error_entry = {
             "datetime": datetime.now().isoformat(),
             "file": p.ai.get("Файл", "unknown"),

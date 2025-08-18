@@ -1,0 +1,4 @@
+ftp_host: "ftp.example.com"     
+ftp_user: "myuser"              
+ftp_pass: "mypassword"          
+ftp_dir: "/upload"              
