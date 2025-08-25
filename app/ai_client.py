@@ -1,9 +1,10 @@
 from state_manager import ConfigState, SystemState
-from config import HandlingProcess, build_structured_prompt
+from config import HandlingProcess
 from utils import breakWork, logErrorJson
 import datetime
 import requests
 import json
+from utils import build_structured_prompt
   
 def requestGPT(prompt: str) -> dict:   
     # 🔑 API-ключ для YandexGPT
