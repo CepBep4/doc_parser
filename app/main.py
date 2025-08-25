@@ -58,7 +58,7 @@ with state.timeManager("Экспорт данных"):
     if not checkPause(state): listFiles = exportFiles(state, config, listFiles)
     
 #Отправляем в 1C (Временно закоментировано)
-with state.timeManager("Отправляем в 1с"):
+with state.timeManager("Отправляем на FTP"):
     if not checkPause(state): listFiles = sendTo1cFtp(state, config, listFiles)
     
 #Завершаем работу
