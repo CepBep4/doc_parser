@@ -1,6 +1,6 @@
 from state_manager import ConfigState, SystemState
 from config import HandlingProcess
-from utils import breakWork, logErrorJson
+from utils import breakWork, logErrorJson, getDirection
 
 #Импорт парсеров
 from parser_file.pdf_parser import fileRead as rpdf
@@ -33,7 +33,7 @@ def readTextFromFiles(state: SystemState, config: ConfigState, listFiles: list[H
                 continue
             
             p.text = ALLOWED_EXTENTION[p.extention](p, state, config)
-            p.direction = ""
+            p.direction = getDirection(p, config)
             
             #Обновляем статус
             p.updateStatus(
