@@ -49,17 +49,17 @@ with state.timeManager("Обработка нейросетью"):
     if not checkPause(state): listFiles = neuroHandler(state, config, listFiles)
     
 #Валидируем обработку нейросетью, validator
-# ! *Временно не используем* !
-# with state.timeManager("Валидация обработки нейросетью"):
-#     if not checkPause(state): listFiles = validateFiles(state, config, listFiles)
+# ! *Временно не используем* ИЗМЕНЕНА ЛОГИКА!
+with state.timeManager("Валидация обработки нейросетью"):
+    if not checkPause(state): listFiles = validateFiles(state, config, listFiles)
     
 #Экспортируем
 with state.timeManager("Экспорт данных"):
     if not checkPause(state): listFiles = exportFiles(state, config, listFiles)
     
 #Отправляем в 1C (Временно закоментировано)
-# with state.timeManager("Отправляем в 1с"):
-#     if not checkPause(state): listFiles = sendTo1cFtp(state, config, listFiles)
+with state.timeManager("Отправляем в 1с"):
+    if not checkPause(state): listFiles = sendTo1cFtp(state, config, listFiles)
     
 #Завершаем работу
 breakWork(state)

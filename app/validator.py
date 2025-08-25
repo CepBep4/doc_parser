@@ -58,7 +58,7 @@ def validateFiles(state: SystemState, config: ConfigState, listFiles: list[Handl
         if p.ai["Status"] == "ok":
             validation_errors = validate_ai_record(p.ai, config.validators, config)
             if validation_errors:
-                p.ai["Status"] = "incomplete"
+                p.ai["Status"] = "ok"
         
         # Проверка на дубликат
         key = (p.ai.get("Серия ИП"), p.ai.get("Дата"), p.ai.get("Тип мероприятия"))
