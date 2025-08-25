@@ -11,7 +11,7 @@ from config import loadConfigs
 from filewalker import getNeedPath
 
 #Чтение текста из файлов
-from parser import readTextFromFiles
+from parser_file import readTextFromFiles
 
 #Модль для работы с нейросетью
 from ai_client import neuroHandler
@@ -49,8 +49,9 @@ with state.timeManager("Обработка нейросетью"):
     if not checkPause(state): listFiles = neuroHandler(state, config, listFiles)
     
 #Валидируем обработку нейросетью, validator
-with state.timeManager("Валидация обработки нейросетью"):
-    if not checkPause(state): listFiles = validateFiles(state, config, listFiles)
+# ! *Временно не используем* !
+# with state.timeManager("Валидация обработки нейросетью"):
+#     if not checkPause(state): listFiles = validateFiles(state, config, listFiles)
     
 #Экспортируем
 with state.timeManager("Экспорт данных"):

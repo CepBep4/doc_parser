@@ -12,7 +12,7 @@ class SystemState:
         self.journalProcess = []
         
     @contextmanager
-    def timeManager(self, nameProcess: str | None="Неизвестно"):
+    def timeManager(self, nameProcess="Неизвество"):
         start_time = time.time()
         yield
         end_time = time.time()

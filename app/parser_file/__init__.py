@@ -3,11 +3,11 @@ from config import HandlingProcess
 from utils import breakWork, logErrorJson
 
 #Импорт парсеров
-from parser.pdf_parser import fileRead as rpdf
-from parser.doc_parser import fileRead as rdoc
-from parser.docx_parser import fileRead as rdocx
-from parser.xlsx_parser import fileRead as rxlsx
-from parser.picture_parser import fileRead as rpicture
+from parser_file.pdf_parser import fileRead as rpdf
+from parser_file.doc_parser import fileRead as rdoc
+from parser_file.docx_parser import fileRead as rdocx
+from parser_file.xlsx_parser import fileRead as rxlsx
+from parser_file.picture_parser import fileRead as rpicture
 
 import datetime
 
@@ -33,6 +33,7 @@ def readTextFromFiles(state: SystemState, config: ConfigState, listFiles: list[H
                 continue
             
             p.text = ALLOWED_EXTENTION[p.extention](p, state, config)
+            p.direction = ""
             
             #Обновляем статус
             p.updateStatus(

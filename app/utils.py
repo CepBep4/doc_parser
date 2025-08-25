@@ -6,7 +6,6 @@ from pathlib import Path
 import json
 import datetime
 
-
 #Проверка pause.flag
 def checkPause(state: SystemState) -> bool:
     if os.path.exists('logs/pause.flag'):
@@ -109,7 +108,7 @@ def logErrorJson(file_path, stage, error_msg):
         json.dump(data, f, ensure_ascii=False, indent=2)
 
 #Проверка перед стартом
-def checkSystemBeforeStart(state: SystemState) -> bool | str:
+def checkSystemBeforeStart(state: SystemState):
     for directory in [True if os.path.exists(x) else x for x in ['configs','data','exports','logs']]:
         if directory != True:
             state.errors = f"Нарушена структура -> директория {directory} отсутсвует"
@@ -214,4 +213,60 @@ def breakWork(state: SystemState):
     
     #Завершаем работу
     exit()
+    
+#Проверяем направление файла
+def getDirection(p, config) -> str:
+    """
+    Определяет направление файла на основе содержимого и конфигурации.
+    
+    Args:
+        p: Объект HandlingProcess с текстом и метаданными файла
+        config: Конфигурация с правилами определения направления
+        
+    Returns:
+        "inbound" - входящий документ
+        "outbound" - исходящий документ
+    """
+    import re
+    
+    # Получаем текст файла
+    file_text = p.text or ""
+    
+    # Компилируем регексы для явных ключевых слов
+    explicit_patterns = config.validators.get('direction_detection', {}).get('explicit_keywords', {
+        'outbound': [r'исходящ(ее|ий|ая)', r'outgoing', r'outbound'],
+        'inbound': [r'входящ(ее|ий|ая)', r'incoming', r'inbound']
+    })
+    
+    # Проверяем явные метки направления в тексте (приоритет)
+    for direction, patterns in explicit_patterns.items():
+        for pattern in patterns:
+            if re.search(pattern, file_text, re.IGNORECASE):
+                return direction
+    
+    # Получаем паттерны для входящих документов из barcode секции
+    inbound_patterns = config.validators.get('barcode', {}).get('regex_any', [
+        r'^\s*\d(?:[\s\d]{6,})/\s*\d{2,}\s*$',      # штрихкод ФССП
+        r'Идентификатор ИП:\s*\d+',                    # идентификатор ИП
+        r'Вид документа:\s*[A-Z0-9_,-]+'              # служебная метка
+    ])
+    
+    # Проверяем признаки входящего документа по содержимому
+    for pattern in inbound_patterns:
+        if re.search(pattern, file_text, re.IGNORECASE):
+            return "inbound"
+    
+    # Фолбэк по пути/имени файла
+    low_path = f"{p.path}/{p.exportName}".lower()
+    
+    # Проверяем ключевые слова в пути/имени
+    if any(keyword in low_path for keyword in ["исходящ", "/out", "\\out"]) or p.exportName.lower().startswith("исх"):
+        return "outbound"
+    
+    if any(keyword in low_path for keyword in ["входящ", "/in", "\\in"]) or p.exportName.lower().startswith("вх"):
+        return "inbound"
+    
+    # Возвращаем направление по умолчанию из конфига
+    default_direction = config.validators.get('direction_detection', {}).get('default_direction', 'outbound')
+    return default_direction
     

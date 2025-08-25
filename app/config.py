@@ -17,6 +17,7 @@ class HandlingProcess:
     status: str
     credit: str
     exportName: str
+    direction: str
     
     def updateStatus(self, stage: str, date, status=None, comment=None, error_msg=None, count=None):
         log_path = "logs/process_log.json"
@@ -179,7 +180,7 @@ def loadConfigs(state: SystemState) -> ConfigState:
     
     return config
 
-def build_structured_prompt(document_text: str) -> str:
+def build_structured_prompt(document_text: str, direction: str) -> str:
     return f"""
 Ты анализируешь текст официального документа. На выходе ты должен вернуть JSON-объект, заполнив только те поля, которые найдены в тексте.
 

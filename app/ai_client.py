@@ -107,7 +107,7 @@ def neuroHandler(state: SystemState, config: ConfigState, listFiles: list[Handli
             if p.status != "ok":
                 continue
             
-            p.ai = requestGPT(build_structured_prompt(p.text))
+            p.ai = requestGPT(build_structured_prompt(p.text, p.direction))
             if p.ai is None:
                 raise BaseException("Пустой dict после запроса к нейросети")
             

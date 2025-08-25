@@ -43,7 +43,6 @@ def exportToJson(p: HandlingProcess):
         append_to_json_array("logs/duplicates_log.json", p.ai)
 
     else:
-        p.exportName = None
         error_entry = {
             "datetime": datetime.now().isoformat(),
             "file": p.ai.get("Файл", "unknown"),
@@ -53,6 +52,8 @@ def exportToJson(p: HandlingProcess):
         }
         append_to_json_array("logs/error_log.json", error_entry)
         
+    return p
+        
 def exportFiles(state: SystemState, config: ConfigState, listFiles: list[HandlingProcess]):
     for p in listFiles:
         try:
@@ -60,7 +61,7 @@ def exportFiles(state: SystemState, config: ConfigState, listFiles: list[Handlin
             if p.status != "ok":
                 continue
             
-            exportToJson(p)
+            p = exportToJson(p)
             
             #Обновляем статус
             p.updateStatus(

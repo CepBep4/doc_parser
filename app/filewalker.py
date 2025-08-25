@@ -25,7 +25,8 @@ def walkOnDir(dirPath: str, findedFiles: list, config: ConfigState, debt: str, c
                         text="",
                         ai={},
                         status = "ok",
-                        exportName=""
+                        exportName="",
+                        direction = ""
                     )
                     #Обновляем статус
                     p.updateStatus(
